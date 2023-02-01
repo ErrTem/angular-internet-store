@@ -1,0 +1,18 @@
+<div class="container">
+  <mat-card class="example-card">
+
+    <mat-card-title>{{product.title}}</mat-card-title>
+    <img class="image" mat-card-image src="{{product.image}}">
+
+    <mat-card-content>
+
+      <p>Цена: {{product.price | currency}}</p>
+      <p>{{product.configure | json}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="button" mat-button>В корзину</button>
+      <button class="button" mat-button [routerLink]="['/product', product.id]" >Подробнее</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

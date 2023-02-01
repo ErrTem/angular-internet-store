@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "id": 3,
+      "title": "Домашняяdsa",
+      "price": "7008",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "ds",
+        "ssd": "saaaa",
+        "memory": "aaaa"
+      }
+    },
+    {
+      "title": "ывфвфы",
+      "price": "",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      },
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "title": "",
+      "price": "dsa",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "sda",
+        "ssd": "",
+        "memory": ""
+      },
+      "id": 7
+    },
+    {
+      "id": 8,
+      "title": "dsa",
+      "price": "",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "dsad",
+        "ssd": "",
+        "memory": ""
+      }
+    },
+    {
+      "id": 9,
+      "title": "",
+      "price": "ывф",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "ыфв",
+        "ssd": "",
+        "memory": ""
+      }
+    },
+    {
+      "id": 10,
+      "title": "dsa",
+      "price": "dsa",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      }
+    }
+  ]
+}
