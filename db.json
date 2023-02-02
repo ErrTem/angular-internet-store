@@ -12,65 +12,18 @@
       }
     },
     {
-      "title": "ывфвфы",
-      "price": "",
+      "id": 4,
+      "title": "123",
+      "price": "213",
       "image": "/assets/images/four_mayo.jpg",
       "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
-      },
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "title": "",
-      "price": "dsa",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "sda",
-        "ssd": "",
-        "memory": ""
-      },
-      "id": 7
-    },
-    {
-      "id": 8,
-      "title": "dsa",
-      "price": "",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "dsad",
-        "ssd": "",
-        "memory": ""
-      }
-    },
-    {
-      "id": 9,
-      "title": "",
-      "price": "ывф",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "ыфв",
-        "ssd": "",
-        "memory": ""
-      }
-    },
-    {
-      "id": 10,
-      "title": "dsa",
-      "price": "dsa",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
+        "chip": "123",
+        "ssd": "123",
+        "memory": "231"
       }
     }
+  ],
+  "basket": [
+    {}
   ]
 }

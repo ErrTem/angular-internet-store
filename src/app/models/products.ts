@@ -3,7 +3,8 @@ export interface PProducts {
   title: string,
   price: number,
   image?: string,
-  configure: PProductsConfig
+  configure: PProductsConfig,
+  quantity: number
 }
 
 export interface PProductsConfig {

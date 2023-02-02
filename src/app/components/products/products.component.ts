@@ -11,13 +11,18 @@ import {DialogBoxComponent} from "../dialog-box/dialog-box.component";
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-  products: PProducts[];
-  productsSubscription: Subscription
-  canEdit: boolean = false
-  canView: boolean = false
 
   constructor(private ProductsService: ProductsService, public dialog: MatDialog) {
   }
+
+  products: PProducts[];
+  productsSubscription: Subscription
+
+  basket: PProducts[];
+  basketSubscription: Subscription
+
+  canEdit: boolean = false
+  canView: boolean = false
 
   ngOnInit(): void {
     //...логика для админа и аторизации
@@ -26,6 +31,36 @@ export class ProductsComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.products = data
       })
+    this.basketSubscription = this.ProductsService.getProductFromBasket().subscribe((data) => {
+      this.basket = data
+    })
+  }
+
+  addToBasket(product: PProducts) {
+    product.quantity = 1
+    let findItem
+    if (this.basket.length > 0) {
+      findItem = this.basket.find((item) => item.id === product.id)
+      if (findItem) {
+        this.updateToBasket(findItem)
+      } else {
+        this.postToBasket(product)
+      }
+    } else this.postToBasket((product))
+  }
+
+  postToBasket(product: PProducts) {
+    this.ProductsService.postProductToBasket(product).subscribe((data) => {
+      this.basket.push(data)
+    })
+  }
+
+// лоигака для обновления корзины
+
+  updateToBasket(product: PProducts) {
+    product.quantity += 1
+    this.ProductsService.updateProductToBasket(product).subscribe((data) => {
+    })
   }
 
   deleteItem(id: number) {
@@ -72,6 +107,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.productsSubscription) this.productsSubscription.unsubscribe()
+    if (this.basketSubscription) this.basketSubscription.unsubscribe()
+
   }
 
 }

@@ -8,6 +8,7 @@ import {Subscription} from "rxjs";
 })
 export class ProductsService {
   url: string = 'http://localhost:3000/products';
+  urlBasket: string = 'http://localhost:3000/basket';
 
 
   constructor(private http: HttpClient) {
@@ -32,5 +33,19 @@ export class ProductsService {
 
   updateProduct(product: PProducts) {
     return this.http.put<PProducts>(`${this.url}/${product.id}`, product)
+  }
+
+  postProductToBasket(product: PProducts) {
+    return this.http.post<PProducts>(this.urlBasket, product)
+  }
+  getProductFromBasket() {
+    return this.http.get<PProducts[]>(this.urlBasket)
+  }
+
+  updateProductToBasket(product: PProducts) {
+    return this.http.put<PProducts>(`${this.urlBasket}/${product.id}`, product)
+  }
+  removeProductFromBasket(id: number) {
+    return this.http.delete<any>(`${this.urlBasket}/${id}`)
   }
 }
