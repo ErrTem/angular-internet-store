@@ -6,12 +6,16 @@
 
     <mat-card-content>
 
-      <p>Цена: {{item.price | currency}}</p>
-      <p>{{item.configure | json}}</p>
+      <p class="price">Цена: <span>{{item.price | currency}}</span></p>
+      <p class="ingredients">{{item.configure | json}}</p>
     </mat-card-content>
     <mat-card-actions>
       <button class="button" mat-button (click)="minusItemFromBasket(item)">-</button>
-      <p>Кол-во: {{item.quantity}}</p>
+<!--      <span>{{item.quantity}}</span>-->
+      <p class="price">Количество: <input
+      class="edit"
+      [value]="item.quantity"
+      > </p>
       <button class="button" mat-button (click)="plusItemFromBasket(item)" >+</button>
     </mat-card-actions>
   </mat-card>

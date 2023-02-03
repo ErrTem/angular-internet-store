@@ -21,9 +21,31 @@
         "ssd": "123",
         "memory": "231"
       }
+    },
+    {
+      "id": 5,
+      "title": "",
+      "price": "",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      }
     }
   ],
   "basket": [
-    {}
+    {
+      "id": 4,
+      "title": "123",
+      "price": "213",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "123",
+        "ssd": "123",
+        "memory": "231"
+      },
+      "quantity": 8
+    }
   ]
 }

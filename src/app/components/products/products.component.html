@@ -3,7 +3,7 @@
 
     <mat-toolbar-row>
       <span class="example-spacer"></span>
-      <button class="button" color="red" mat-button (click)="openDialog()">Добавить товар</button>
+      <button class="add-products-button" mat-button (click)="openDialog()">Добавить товар</button>
     </mat-toolbar-row>
   </mat-toolbar>
 
@@ -14,13 +14,12 @@
 
     <mat-card-content>
 
-      <p>Цена: {{product.price | currency}}</p>
-      <p>{{product.configure | json}}</p>
+      <p class="price">Цена: <span>{{product.price | currency}}</span></p>
+      <p class="ingredients">{{product.configure | json}}</p>
     </mat-card-content>
     <mat-card-actions>
       <button class="button" mat-button (click)="addToBasket(product)" type="button">В корзину</button>
       <button class="button" mat-button [routerLink]="['/product', product.id]">Подробнее</button>
-
       <button class="button" mat-button [matMenuTriggerFor]="menu">Ред.</button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="deleteItem(product.id)">Удалить</button>
