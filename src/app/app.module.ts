@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { NgxsModule } from '@ngxs/store';
+
 import { BrowserModule } from '@angular/platform-browser';
 
 import {HttpClientModule} from "@angular/common/http";
@@ -22,7 +24,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatMenuModule} from '@angular/material/menu';
-
+import { LoginComponent } from './components/auth/login/login.component';
+import { NotFoundComponent } from './components/auth/not-found/not-found.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -34,9 +38,12 @@ import {MatMenuModule} from '@angular/material/menu';
     BasketComponent,
     ProductDetailsComponent,
     BaseComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    LoginComponent,
+    NotFoundComponent
   ],
   imports: [
+    NgxsModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -47,6 +54,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDialogModule,
     MatInputModule,
     MatMenuModule,
+    MatProgressBarModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule

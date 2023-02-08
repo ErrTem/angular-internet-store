@@ -7,6 +7,9 @@
     </mat-toolbar-row>
   </mat-toolbar>
 
+  <mat-progress-bar  mode="indeterminate" *ngIf="isLoading | async"></mat-progress-bar>
+
+
   <mat-card class="example-card" *ngFor="let product of products">
 
     <mat-card-title>{{product.title}}</mat-card-title>

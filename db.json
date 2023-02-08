@@ -32,6 +32,39 @@
         "ssd": "",
         "memory": ""
       }
+    },
+    {
+      "id": 6,
+      "title": "",
+      "price": "",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      }
+    },
+    {
+      "id": 7,
+      "title": "",
+      "price": "",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      }
+    },
+    {
+      "id": 8,
+      "title": "",
+      "price": "",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      }
     }
   ],
   "basket": [
@@ -45,7 +78,31 @@
         "ssd": "123",
         "memory": "231"
       },
-      "quantity": 8
+      "quantity": 433
+    },
+    {
+      "id": 3,
+      "title": "Домашняяdsa",
+      "price": "7008",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "ds",
+        "ssd": "saaaa",
+        "memory": "aaaa"
+      },
+      "quantity": 2
+    },
+    {
+      "id": 6,
+      "title": "",
+      "price": "",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      },
+      "quantity": 4
     }
   ]
 }

@@ -28,7 +28,7 @@ export class DialogBoxComponent implements OnInit {
   isNew: boolean = true;
 
   onNoClick(): void {
-    this.dialogRef.close(null);
+    this.dialogRef.close(null)
   }
 
   onSubmit() {
@@ -45,7 +45,7 @@ export class DialogBoxComponent implements OnInit {
 
     }
     // console.log(this.myForm)
-    this.dialogRef.close(this.data);
+    this.dialogRef.close(this.data)
   }
 
   ngOnInit(): void {

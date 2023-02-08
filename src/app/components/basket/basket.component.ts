@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {PProducts} from "../../models/products";
 import {Subscription} from "rxjs";
 import {ProductsService} from "../../services/products.service";
+import {style} from "@angular/animations";
 
 @Component({
   selector: 'app-basket',
@@ -9,6 +10,8 @@ import {ProductsService} from "../../services/products.service";
   styleUrls: ['../products.component.scss']
 })
 export class BasketComponent implements OnInit {
+  editingQuantity: number
+  isInputVisible = true
 
   constructor(private ProductService: ProductsService) {
   }
@@ -44,5 +47,23 @@ export class BasketComponent implements OnInit {
     item.quantity += 1
     this.ProductService.updateProductToBasket(item).subscribe((data) => {
     })
+  }
+
+  changeQuantity(event: Event): void {
+    let value = (event.target as HTMLInputElement).value
+    this.editingQuantity = +value
+  }
+
+  changeBasketItemQuantity(item:PProducts) {
+    item.quantity = this.editingQuantity
+    this.ProductService.updateBasketItemQuantity(item).subscribe(()=> {})
+  }
+
+  showInput(event: Event): void {
+    let value = (event.target as  HTMLInputElement)
+    console.log(value.style)
+    value.style.display = 'flex'
+
+
   }
 }
