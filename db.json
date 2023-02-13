@@ -67,6 +67,15 @@
       }
     }
   ],
+  "goods": [
+    {
+      "id": 18,
+      "title": "шняга",
+      "price": 100,
+      "image": "/assets/images/four_mayo.jpg",
+      "ingredients": "четыре майонеза"
+    }
+  ],
   "basket": [
     {
       "id": 4,
@@ -103,6 +112,18 @@
         "memory": ""
       },
       "quantity": 4
+    },
+    {
+      "id": 7,
+      "title": "",
+      "price": "",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      },
+      "quantity": 1
     }
   ]
 }
