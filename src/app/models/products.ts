@@ -1,14 +1,12 @@
-export interface PProducts {
+export interface PProduct {
   id: number,
   title: string,
   price: number,
-  image?: string,
-  configure: PProductsConfig,
-  quantity: number
+  image: string,
+  ingredients: string
 }
 
-export interface PProductsConfig {
-  chip: string,
-  ssd: string,
-  memory: string
+export interface BasketItem {
+  product: PProduct,
+  quantity: number
 }

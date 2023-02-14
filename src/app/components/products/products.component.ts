@@ -1,48 +1,44 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
-import {PProducts} from "../../models/products";
-import {filter, mapTo, merge, Observable, Subscription} from "rxjs";
+import {Component, OnInit} from "@angular/core";
+import {BasketItem, PProduct} from "../../models/products";
+import {BehaviorSubject, filter, mapTo, merge, Observable, Subscription} from "rxjs";
 import {ProductsService} from "../../services/products.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {DialogBoxComponent} from "../dialog-box/dialog-box.component";
 import {ResolveEnd, ResolveStart, Router} from "@angular/router";
+import {BasketService} from "../../services/basket.service";
 
 @Component({
   selector: "app-products",
   templateUrl: "./products.component.html",
   styleUrls: ["../products.component.scss"]
 })
-export class ProductsComponent implements OnInit, OnDestroy {
-
+export class ProductsComponent implements OnInit {
   constructor(private ProductsService: ProductsService,
               public dialog: MatDialog,
-              private router: Router) {
+              private router: Router,
+              private basketService: BasketService) {
   }
+
+  isLoading!: Observable<boolean>
+
+  products: PProduct[] = []
+  products$!: Observable<PProduct[]>
+
+  basket$!: Observable<BasketItem[]>
+
+  canEdit: boolean = false // todo admin logic and authorization
+  canView: boolean = false
 
   private showLoader!: Observable<boolean>
   private hideLoader!: Observable<boolean>
 
-  isLoading!: Observable<boolean>
-
-  products: PProducts[]
-  productsSubscription: Subscription
-
-  basket: PProducts[]
-  basketSubscription: Subscription
-
-  canEdit: boolean = false // логика для админа и авторизации
-  canView: boolean = false
-
   ngOnInit(): void {
 
     this.canEdit = true
-    this.productsSubscription = this.ProductsService.getProducts()
-      .subscribe((data) => {
-        this.products = data
-      });
-    this.basketSubscription = this.ProductsService.getProductFromBasket().subscribe((data) => {
-      this.basket = data
-    })
-// loader doesnt work
+    this.products$ = this.ProductsService.getProducts()
+    this.basket$ = this.basketService.getBasket()
+
+// todo loader doesnt work
     this.hideLoader = this.router.events.pipe(filter((e) => e instanceof ResolveEnd),
       mapTo(false))
 
@@ -52,29 +48,15 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.isLoading = merge(this.hideLoader, this.showLoader)
   }
 
-  addToBasket(product: PProducts) {
-    product.quantity = 1
-    let findItem
-    if (this.basket.length > 0) {
-      findItem = this.basket.find((item) => item.id === product.id)
-      if (findItem) {
-        this.updateToBasket(findItem)
-      } else {
-        this.postToBasket(product)
-      }
-    } else this.postToBasket((product))
+
+  addToBasket(product: PProduct) {
+    this.basketService.addBasketItem(product)
   }
 
-  postToBasket(product: PProducts) {
-    this.ProductsService.postProductToBasket(product).subscribe((data) => {
-      this.basket.push(data)
-    })
-  }
+// todo logic for update basket
 
-// лоигака для обновления корзины
-
-  updateToBasket(product: PProducts) {
-    product.quantity += 1
+  updateToBasket(product: PProduct) {
+    // product.quantity += 1
     this.ProductsService.updateProductToBasket(product).subscribe(() => {
     })
   }
@@ -88,7 +70,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }))
   }
 
-  openDialog(product?: PProducts): void {
+  openDialog(product?: PProduct): void {
     let dialogConfig = new MatDialogConfig()
     dialogConfig.width = "500px"
 
@@ -106,26 +88,20 @@ export class ProductsComponent implements OnInit, OnDestroy {
     })
   }
 
-  postData(data: PProducts) {
+  postData(data: PProduct) {
     console.log(data)
     this.ProductsService.postProduct(data).subscribe((data) => {
       this.products.push(data)
     })
   }
 
-  updateData(product: PProducts) {
+  updateData(product: PProduct) {
     this.ProductsService.updateProduct(product).subscribe((data) => {
       this.products = this.products.map((product) => {
         if (product.id === data.id) return data
         else return product
       })
     })
-  }
-
-  ngOnDestroy() {
-    if (this.productsSubscription) this.productsSubscription.unsubscribe()
-    if (this.basketSubscription) this.basketSubscription.unsubscribe()
-
   }
 
 }

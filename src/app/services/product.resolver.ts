@@ -5,16 +5,16 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import {catchError, EMPTY, Observable, of} from 'rxjs';
-import {PProducts} from "../models/products";
+import {PProduct} from "../models/products";
 import {ProductsService} from "./products.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductResolver implements Resolve<PProducts> {
+export class ProductResolver implements Resolve<PProduct> {
   constructor(private ProductsService: ProductsService, private router: Router) {
   }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PProducts> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PProduct> {
     return this.ProductsService.getProduct(route.params?.['id']).pipe(
       catchError(()=> {
         this.router.navigate(['products'])

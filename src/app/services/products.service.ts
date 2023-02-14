@@ -1,7 +1,6 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {PProducts, PProductsConfig} from "../models/products";
-import {Subscription} from "rxjs";
+import {PProduct} from "../models/products";
 
 @Injectable({
   providedIn: 'root'
@@ -15,40 +14,40 @@ export class ProductsService {
   }
 
   getProducts() {
-    return this.http.get<PProducts[]>(this.url)
+    return this.http.get<PProduct[]>(this.url)
 
   }
 
   getProduct(id: number) {
-    return this.http.get<PProducts>(`${this.url}/${id}`)
+    return this.http.get<PProduct>(`${this.url}/${id}`)
   }
 
-  postProduct(product: PProducts) {
-    return this.http.post<PProducts>(this.url, product)
+  postProduct(product: PProduct) {
+    return this.http.post<PProduct>(this.url, product)
   }
 
   deleteProduct(id: number) {
     return this.http.delete<any>(`${this.url}/${id}`)
   }
 
-  updateProduct(product: PProducts) {
-    return this.http.put<PProducts>(`${this.url}/${product.id}`, product)
+  updateProduct(product: PProduct) {
+    return this.http.put<PProduct>(`${this.url}/${product.id}`, product)
   }
 
-  postProductToBasket(product: PProducts) {
-    return this.http.post<PProducts>(this.urlBasket, product)
+  postProductToBasket(product: PProduct) {
+    return this.http.post<PProduct>(this.urlBasket, product)
   }
   getProductFromBasket() {
-    return this.http.get<PProducts[]>(this.urlBasket)
+    return this.http.get<PProduct[]>(this.urlBasket)
   }
 
-  updateProductToBasket(product: PProducts) {
-    return this.http.put<PProducts>(`${this.urlBasket}/${product.id}`, product)
+  updateProductToBasket(product: PProduct) {
+    return this.http.put<PProduct>(`${this.urlBasket}/${product.id}`, product)
   }
   removeProductFromBasket(id: number) {
     return this.http.delete<any>(`${this.urlBasket}/${id}`)
   }
-  updateBasketItemQuantity(product: PProducts) {
-    return this.http.put<PProducts>(`${this.urlBasket}/${product.id}`, product)
+  updateBasketItemQuantity(product: PProduct) {
+    return this.http.put<PProduct>(`${this.urlBasket}/${product.id}`, product)
   }
 }

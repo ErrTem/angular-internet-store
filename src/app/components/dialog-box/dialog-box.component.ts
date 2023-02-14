@@ -13,10 +13,10 @@ export class DialogBoxComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
-    if (this.data) this.isNew = false
+
   }
 
-  myForm: FormGroup = new FormGroup({
+  myForm: FormGroup = new FormGroup({ //todo formbuilder
     id: new FormControl(this.data?.id ?? null),
     title: new FormControl(this.data?.title ?? ''),
     price: new FormControl(this.data?.price ?? ''),
@@ -49,5 +49,7 @@ export class DialogBoxComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.data) this.isNew = false
+    // this.dialogRef.
   }
 }

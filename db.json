@@ -65,6 +65,28 @@
         "ssd": "",
         "memory": ""
       }
+    },
+    {
+      "id": 9,
+      "title": "",
+      "price": "",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      }
+    },
+    {
+      "id": 10,
+      "title": "dsad",
+      "price": "",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      }
     }
   ],
   "goods": [

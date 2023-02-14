@@ -1,6 +1,5 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {BaseComponent} from "./components/base/base.component";
 import {ProductsComponent} from "./components/products/products.component";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
 import {BasketComponent} from "./components/basket/basket.component";
@@ -9,17 +8,17 @@ import {LoginComponent} from "./components/auth/login/login.component";
 import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
-  {path: "", component: BaseComponent},
+  {path: '', redirectTo: "products", pathMatch: "full"}, // как задать стартовую страницу которая будет начинаться со /products
   {path: "products", component: ProductsComponent},
   {path: "product/:id", component: ProductDetailsComponent, resolve: {data: ProductResolver}},
   {
     path: "basket",
-    canActivate: [AuthGuard],
-    canDeactivate: [AuthGuard],
+    // canActivate: [AuthGuard],
+    // canDeactivate: [AuthGuard],
     component: BasketComponent
   },
   {path: "login", component: LoginComponent},
-  {path: "**", redirectTo: "", component: BaseComponent, pathMatch: "full"}
+  {path: "**", redirectTo: "products"} // как сделать нормально?
 
 ];
 

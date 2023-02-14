@@ -13,7 +13,7 @@ import { FooterComponent } from './components/UI/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { BaseComponent } from './components/base/base.component';
+
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -37,7 +37,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ProductsComponent,
     BasketComponent,
     ProductDetailsComponent,
-    BaseComponent,
     DialogBoxComponent,
     LoginComponent,
     NotFoundComponent

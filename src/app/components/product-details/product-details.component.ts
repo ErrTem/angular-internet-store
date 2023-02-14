@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PProducts} from "../../models/products";
+import {PProduct} from "../../models/products";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 
@@ -9,10 +9,10 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-  product: PProducts
-  productSubscription: Subscription
   constructor( private route: ActivatedRoute) {
   }
+  product!: PProduct
+  productSubscription!: Subscription
 
   ngOnInit():void {
     this.productSubscription = this.route.data.subscribe((data) => {
