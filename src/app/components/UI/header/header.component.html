@@ -8,12 +8,33 @@
 
     <span class="example-spacer"></span>
     <div class="toolbar no-select">
-      <button class="toolbar button" mat-flat-button routerLink="">Главная</button>
-      <button class="toolbar button" mat-flat-button routerLink="products" routerLinkActive="active-link">Товары</button>
-      <button class="toolbar button" mat-flat-button routerLink="basket">Корзина</button>
-<!--      логика для войти выйти-->
-      <button class="toolbar button" mat-flat-button routerLink="login">Войти</button>
-      <button class="toolbar button" mat-flat-button (click)="logout() ">Выйти</button>
+
+      <button class="toolbar button" mat-flat-button routerLink="">
+        Главная
+      </button>
+      <button class="toolbar button" mat-flat-button routerLink="products" routerLinkActive="active-link">
+        Товары
+      </button>
+
+      <button
+        class="toolbar button demo-section"
+        mat-flat-button routerLink="basket"
+        [matBadgeHidden]="itemCountHidden$ | async"
+        [matBadge]="itemsCountRound$ | async"
+        matBadgeOverlap="true"
+        matBadgeColor="warn"
+      >
+        Корзина
+      </button>
+
+      <!--       //todo logic logIn/Out-->
+
+      <button class="toolbar button" mat-flat-button routerLink="login">
+        Войти
+      </button>
+      <button class="toolbar button" mat-flat-button (click)="logout() ">
+        Выйти
+      </button>
     </div>
 
   </mat-toolbar-row>

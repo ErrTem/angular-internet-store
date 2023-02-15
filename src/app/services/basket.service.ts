@@ -20,6 +20,7 @@ export class BasketService {
     const inBasketItem = currentBasket.find(({product}) => product.id === newProduct.id)
     if (inBasketItem) {
       inBasketItem.quantity += 1
+      this.basket$.next(currentBasket)
     } else {
       this.basket$.next([...currentBasket, {product: newProduct, quantity: 1}])
     }

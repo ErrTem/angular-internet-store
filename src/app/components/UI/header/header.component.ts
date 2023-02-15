@@ -1,8 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {BasketService} from "../../../services/basket.service";
-import {map, Observable, switchMap} from "rxjs";
+import {debounceTime, map, Observable, tap} from "rxjs";
+
+const BADGE_LIMIT = 99;
+const MAX_LIMIT = "99";
 
 @Component({
   selector: "app-header",
@@ -10,17 +12,30 @@ import {map, Observable, switchMap} from "rxjs";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
-  private itemsCount!: Observable<number>;
+
+  itemsCount$!: Observable<number>
+  itemsCountRound$!: Observable<string>
+  itemCountHidden$!: Observable<boolean>
 
   constructor(private authService: AuthService,
               private basketService: BasketService) {
   }
 
   ngOnInit(): void {
-    this.itemsCount = this.basketService.getBasket()
-      .pipe(map(basket => ))
-    // todo bages total count
-    // rxjs switch map - посчитать каждый obs
+    this.itemsCount$ = this.basketService.getBasket()
+      .pipe(
+        map((product) => product.reduce((accum, {quantity}) => accum + quantity, 0))
+      )
+
+    this.itemsCountRound$ = this.itemsCount$
+      .pipe(
+        map(itemCount => itemCount > BADGE_LIMIT ? MAX_LIMIT : String(itemCount))
+      )
+
+    this.itemCountHidden$ = this.itemsCount$
+      .pipe(
+        map(itemCount => itemCount === 0)
+      )
   }
 
   logout() {

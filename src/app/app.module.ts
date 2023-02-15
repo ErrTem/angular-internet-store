@@ -27,6 +27,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { LoginComponent } from './components/auth/login/login.component';
 import { NotFoundComponent } from './components/auth/not-found/not-found.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatCardModule,
     MatDialogModule,
     MatInputModule,
+    MatBadgeModule,
     MatMenuModule,
     MatProgressBarModule,
     HttpClientModule,
