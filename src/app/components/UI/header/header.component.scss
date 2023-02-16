@@ -4,9 +4,14 @@
   align-items: flex-start;
 }
 
-.demo-section + .demo-section {
-  color: red;
-  background-color: #D61C4E;
-
+.demo-section {
+  z-index: 100;
 }
+// todo что перекрывает цвет?
+.active-link {
+  color: #F77E21 !important;
+  background-color: #FFCA86 !important;
+}
+
+
 

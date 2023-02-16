@@ -8,7 +8,7 @@ import {LoginComponent} from "./components/auth/login/login.component";
 import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
-  {path: '', redirectTo: "products", pathMatch: "full"}, // как задать стартовую страницу которая будет начинаться со /products
+  {path: '', redirectTo: "products", pathMatch: "full"},
   {path: "products", component: ProductsComponent},
   {path: "product/:id", component: ProductDetailsComponent, resolve: {data: ProductResolver}},
   {
@@ -18,7 +18,7 @@ const routes: Routes = [
     component: BasketComponent
   },
   {path: "login", component: LoginComponent},
-  {path: "**", redirectTo: "products"} // как сделать нормально?
+  {path: "**", redirectTo: "products"}
 
 ];
 

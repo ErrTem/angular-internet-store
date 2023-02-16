@@ -1,22 +1,23 @@
 <mat-toolbar>
 
   <mat-toolbar-row>
-    <div class="toolbar no-select" routerLink="">
+    <div class="toolbar no-select" routerLink="/products">
       <mat-icon>local_pizza</mat-icon>
       <span>Pizza Shop</span>
     </div>
 
     <span class="example-spacer"></span>
-    <div class="toolbar no-select">
 
-      <button class="toolbar button" mat-flat-button routerLink="">
+    <div class="toolbar no-select">
+      <button
+        class="toolbar button"
+        routerLinkActive="active-link"
+        mat-flat-button routerLink="/products"
+      >
         Главная
       </button>
-      <button class="toolbar button" mat-flat-button routerLink="products" routerLinkActive="active-link">
-        Товары
-      </button>
-
       <button
+        routerLinkActive="active-link"
         class="toolbar button demo-section"
         mat-flat-button routerLink="basket"
         [matBadgeHidden]="itemCountHidden$ | async"
@@ -26,16 +27,14 @@
       >
         Корзина
       </button>
-
-      <!--       //todo logic logIn/Out-->
-
-      <button class="toolbar button" mat-flat-button routerLink="login">
-        Войти
-      </button>
-      <button class="toolbar button" mat-flat-button (click)="logout() ">
+      <button
+        routerLinkActive="active-link"
+        class="toolbar button"
+        mat-flat-button routerLink="login"
+        (click)="logout() "
+      >
         Выйти
       </button>
     </div>
-
   </mat-toolbar-row>
 </mat-toolbar>
