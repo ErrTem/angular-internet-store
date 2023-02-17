@@ -1,8 +1,10 @@
 import {Injectable} from "@angular/core";
-import {Observable, of, throwError} from "rxjs";
+import {Observable, of, tap, throwError} from "rxjs";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../models/auth";
+import {environment} from "../environments/environment";
+import {FbAuthResponse} from "../environments/interface";
 
 @Injectable({
   providedIn: "root" // todo сделать админский модуль и зарегестрировать там?
@@ -12,12 +14,17 @@ export class AuthService {
   constructor(private router: Router,
               private http: HttpClient) {
   }
+
   get token(): string {
-    return ''
+    return ""
   }
 
-  login(user: User) {
-    this.http.post('', user)
+  login(user: User): Observable<any> {
+    return this.http
+      .post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
+      .pipe(
+        tap(this.setToken)
+      )
   }
 
   logout() {
@@ -25,11 +32,11 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-  return !!this.token
+    return !!this.token
   }
 
-  private setToken() {
-
+  private setToken(response: FbAuthResponse) {
+    console.log(response)
   }
 
   // setToken(token: string) {

@@ -1,84 +1,51 @@
-<div>
-  <form
-    class="example-form"
-    [formGroup] = "loginForm"
-    (ngSubmit)="submit()"
-  >
-    <mat-form-field class="example-full-width">
-      <mat-label>Email</mat-label>
-
-<!--     //todo matInput как работает? почему обязательно должен быть?-->
-      <input
-        matInput [formGroup]="loginForm"
-        formControlName="email"
-        type="email"
-        placehlder="Ex. pat@example.com"
-      >
-
-<!--      // todo this нужен перед loginForm?-->
-<!--      *ngIf="loginForm.get('email').hasError('required')" // todo как обратиться к hasError?-->
-      <mat-error *ngIf="this.loginForm.hasError('required')">
-        Please enter a valid email address
-      </mat-error>
-      <mat-error *ngIf="this.loginForm.get('email').hasError('required')">
-        Email is <strong>required</strong>
-      </mat-error>
-
-    </mat-form-field>
-
-<!--    <mat-form-field class="example-full-width">-->
-<!--      <mat-label>Password</mat-label>-->
-
-<!--      //todo formControlName для чего нужен и как используется-->
-<!--      <input-->
-<!--        formControlName="password"-->
-<!--        type="password"-->
-<!--        matInput-->
-<!--        placeholder="qwerty123"-->
-<!--      >-->
-<!--      controls.email.errors.required-->
-<!--      <mat-error *ngIf="loginForm.hasError('email') && !loginForm.hasError('required')">-->
-<!--        Please enter a valid password-->
-<!--      </mat-error>-->
-<!--      <mat-error *ngIf="loginForm.hasError('required')">-->
-<!--        Email is <strong>required</strong>-->
-<!--      </mat-error>-->
-<!--    </mat-form-field>-->
-
-    <button
-
-      type="submit"
+<mat-card class="example-card login-form">
+  <mat-card-content>
+    <form
+      class="example-form"
+      [formGroup]="loginForm"
+      (ngSubmit)="submit()"
     >
-      Login
-    </button>
-  </form>
-</div>
 
-<!--<hr>-->
-<!--<hr>-->
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput [formGroup]="loginForm"
+          formControlName="email"
+          type="email"
+          placeholder="Ex. pat@example.com"
+        >
+        <ng-container *ngIf="emailControl.touched && emailControlError">
+          <!--        todo почему можно вызвать emailControl.hasError?-->
+          <mat-error>
+            {{errorLoginMap[emailControlError]}}
+          </mat-error>
+        </ng-container>
+      </mat-form-field>
 
-<!--<mat-error *ngIf="this.loginForm.hasError('email') && !emailFormControl.hasError('required')">-->
-<!--  Please enter a valid email address-->
-<!--</mat-error>-->
-<!--<hr>-->
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput [formGroup]="loginForm"
+          formControlName="password"
+          type="password"
+          placeholder="should include at least 8 symbols and letters"
+        >
+        <ng-container *ngIf="passwordControl.touched && passwordControlError">
+          <mat-error>
+            {{errorPasswordMap[passwordControlError]}}
+          </mat-error>
+        </ng-container>
+      </mat-form-field>
 
+      <button
+        class="toolbar mat-mdc-button mat-mdc-card login-button"
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
 
-<!--<h2>Login</h2>-->
-<!--<p>Please enter your login and password</p>-->
-<!--<form [formGroup]="loginForm" (ngSubmit)="submitLogin()">-->
-<!--  <div>-->
-<!--    <input formControlName="email" type="email">-->
-<!--    <label>Email</label>-->
-<!--    <p *ngIf="this.loginForm.get('email')?.invalid && this.loginForm.get('email')?.touched">-->
-<!--      Email is required-->
-<!--    </p>-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <input formControlName="password" type="password">-->
-<!--    <label>Password</label>-->
-<!--    <p *ngIf="this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched">-->
-<!--      Password is required-->
-<!--    </p>-->
-<!--  </div>-->
-<!--  <button [disabled]="loginForm.invalid" type="submit">Login</button>-->
-<!--</form>-->
+    </form>
+  </mat-card-content>
+</mat-card>
+
