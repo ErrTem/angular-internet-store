@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../models/auth";
 import {environment} from "../environments/environment";
-import {FbAuthResponse} from "../environments/interface";
+import {FbAuthResponse} from "../models/interface";
 
 @Injectable({
   providedIn: "root" // todo сделать админский модуль и зарегестрировать там?
@@ -12,7 +12,18 @@ import {FbAuthResponse} from "../environments/interface";
 export class AuthService {
 
   constructor(private router: Router,
-              private http: HttpClient) {
+              private http: HttpClient,
+  ) {
+  }
+
+  private setToken(response: FbAuthResponse | null) {
+    if (response) {
+      const expDate = new Date(new Date().getTime() + +response.expiresIn * 1000)
+      localStorage.setItem("fb-token", response.idToken)
+      localStorage.setItem("fb-token-exp", expDate.toString())
+    } else {
+      localStorage.clear()
+    }
   }
 
   get token(): string {
@@ -20,28 +31,21 @@ export class AuthService {
   }
 
   login(user: User): Observable<any> {
+    user.returnSecureToken = true
     return this.http
       .post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
       .pipe(
-        tap(this.setToken)
       )
   }
 
   logout() {
-
+    this.setToken((null))
   }
 
   isAuthenticated(): boolean {
     return !!this.token
   }
 
-  private setToken(response: FbAuthResponse) {
-    console.log(response)
-  }
-
-  // setToken(token: string) {
-  //   localStorage.setItem("token", token)
-  // }
 
   getToken() {
     return localStorage.getItem("token")
@@ -51,6 +55,9 @@ export class AuthService {
     return this.getToken() !== null
   }
 
+  // setToken(token: string) {
+  //   localStorage.setItem("token", token)
+  // }
   // login(userInfo: { email: string, password: string }): Observable<string | boolean> {
   //   if (userInfo.email === "admin@gmail.com" && userInfo.password === "admin123") {
   //     this.setToken("dasghasehsfhserfdsfawd")

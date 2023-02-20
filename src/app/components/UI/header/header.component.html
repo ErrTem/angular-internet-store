@@ -19,7 +19,8 @@
       <button
         routerLinkActive="active-link"
         class="toolbar button demo-section"
-        mat-flat-button routerLink="basket"
+        mat-flat-button
+        routerLink="basket"
         [matBadgeHidden]="itemCountHidden$ | async"
         [matBadge]="itemsCountRound$ | async"
         matBadgeOverlap="true"

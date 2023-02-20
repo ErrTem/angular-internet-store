@@ -6,6 +6,9 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {DialogBoxComponent} from "../dialog-box/dialog-box.component";
 import {ResolveEnd, ResolveStart, Router} from "@angular/router";
 import {BasketService} from "../../services/basket.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {SnackBarComponent} from "../decorations/snack-bar/snack-bar.component";
+import {ProductDetailsComponent} from "../product-details/product-details.component";
 
 @Component({
   selector: "app-products",
@@ -16,8 +19,10 @@ export class ProductsComponent implements OnInit {
   constructor(private ProductsService: ProductsService,
               public dialog: MatDialog,
               private router: Router,
-              private basketService: BasketService) {
+              private basketService: BasketService,
+              private snackBar: MatSnackBar) {
   }
+  durationInSeconds = 5
 
   isLoading!: Observable<boolean>
 
@@ -48,6 +53,11 @@ export class ProductsComponent implements OnInit {
     this.isLoading = merge(this.hideLoader, this.showLoader)
   }
 
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 200,
+    });
+  }
 
   addToBasket(product: PProduct) {
     this.basketService.addBasketItem(product)
@@ -102,6 +112,12 @@ export class ProductsComponent implements OnInit {
         else return product
       })
     })
+  }
+
+  openProduct() :void {
+    const dialogRef = this.dialog.open(ProductDetailsComponent)
+    dialogRef.afterClosed().subscribe()
+
   }
 
 }

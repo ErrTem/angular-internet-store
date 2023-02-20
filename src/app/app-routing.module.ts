@@ -10,7 +10,7 @@ import {AuthGuard} from "./guards/auth.guard";
 const routes: Routes = [
   {path: '', redirectTo: "products", pathMatch: "full"},
   {path: "products", component: ProductsComponent},
-  {path: "product/:id", component: ProductDetailsComponent, resolve: {data: ProductResolver}},
+  {path: "products/:id", component: ProductDetailsComponent, resolve: {data: ProductResolver}},
   {
     path: "basket",
     // canActivate: [AuthGuard],
