@@ -2,7 +2,11 @@ import {Component, Inject, OnInit} from "@angular/core";
 import {PProduct} from "../../models/products";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+
+export interface ProductDetailsDialogData {
+  product: PProduct,
+}
 
 @Component({
   selector: "app-product-details",
@@ -10,18 +14,26 @@ import {MatDialogRef} from "@angular/material/dialog";
   styleUrls: ["./product-details.component.scss"]
 })
 export class ProductDetailsComponent implements OnInit {
-  constructor(private route: ActivatedRoute,
-              public dialogRef: MatDialogRef<ProductDetailsComponent>) {
+  constructor(
+    public dialogRef: MatDialogRef<ProductDetailsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ProductDetailsDialogData) {
   }
 
   product!: PProduct
   productSubscription!: Subscription
 
   ngOnInit(): void {
-    this.productSubscription = this.route.data.subscribe((data) => {
-      this.product = data["data"]
-    })
+    console.log(this.data);
   }
+
+  sucsess() {
+    this.dialogRef.close("yes")
+  }
+
+  unSucsess() {
+    this.dialogRef.close("nope")
+  }
+
   onNoClick(): void {
     this.dialogRef.close()
   }

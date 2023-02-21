@@ -1,151 +1,60 @@
 {
   "products": [
     {
-      "id": 3,
-      "title": "Домашняяdsa",
-      "price": "7008",
+      "id": 1,
+      "title": "Четыре майонеза",
+      "price": "100",
       "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "ds",
-        "ssd": "saaaa",
-        "memory": "aaaa"
-      }
+      "ingredients": "Запеченная буженина из свинины, моцарелла, картофель из печи, маринованные огурчики, красный лук, чеснок, фирменный томатный соус, соус ранч"
+    },
+    {
+      "id": 2,
+      "title": "Бербекю",
+      "price": "150",
+      "image": "/assets/images/bbq.jpg",
+      "ingredients": "Моцарелла, сыры чеддер и пармезан, фирменный соус альфредо"
+    },
+    {
+      "id": 3,
+      "title": "Домашня расширенная",
+      "price": "99",
+      "image": "/assets/images/home.jpg",
+      "ingredients": "Пикантная пепперони, увеличенная порция моцареллы, томаты, фирменный томатный соус"
     },
     {
       "id": 4,
-      "title": "123",
-      "price": "213",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "123",
-        "ssd": "123",
-        "memory": "231"
-      }
+      "title": "Мясная",
+      "price": "77",
+      "image": "/assets/images/meat.jpg",
+      "ingredients": "Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, фирменный соус альфредо, чеснок"
     },
     {
       "id": 5,
-      "title": "",
-      "price": "",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
-      }
+      "title": "Пеперони",
+      "price": "121",
+      "image": "/assets/images/cheese.jpg",
+      "ingredients": "Ветчина, маринованные огурчики, томаты, красный лук, чеснок, соус бургер, моцарелла, фирменный томатный соус"
     },
     {
       "id": 6,
-      "title": "",
-      "price": "",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
-      }
+      "title": "Карри",
+      "price": "45",
+      "image": "/assets/images/curry.jpg",
+      "ingredients": "Цыпленок, соус песто, кубики брынзы, томаты, моцарелла, фирменный соус альфредо"
     },
     {
       "id": 7,
-      "title": "",
-      "price": "",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
-      }
-    },
-    {
-      "id": 8,
-      "title": "",
-      "price": "",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
-      }
-    },
-    {
-      "id": 9,
-      "title": "",
-      "price": "",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
-      }
-    },
-    {
-      "id": 10,
-      "title": "dsad",
-      "price": "",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
-      }
+      "title": "Ветчина и грибы",
+      "price": "167",
+      "image": "/assets/images/ham.jpg",
+      "ingredients": "Ветчина, шампиньоны, увеличенная порция моцареллы, фирменный томатный соус"
     }
   ],
   "goods": [
     {
-      "id": 18,
-      "title": "шняга",
-      "price": 100,
-      "image": "/assets/images/four_mayo.jpg",
-      "ingredients": "четыре майонеза"
     }
   ],
   "basket": [
-    {
-      "id": 4,
-      "title": "123",
-      "price": "213",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "123",
-        "ssd": "123",
-        "memory": "231"
-      },
-      "quantity": 433
-    },
-    {
-      "id": 3,
-      "title": "Домашняяdsa",
-      "price": "7008",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "ds",
-        "ssd": "saaaa",
-        "memory": "aaaa"
-      },
-      "quantity": 2
-    },
-    {
-      "id": 6,
-      "title": "",
-      "price": "",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
-      },
-      "quantity": 4
-    },
-    {
-      "id": 7,
-      "title": "",
-      "price": "",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
-      },
-      "quantity": 1
-    }
+    {}
   ]
 }

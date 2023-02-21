@@ -29,7 +29,13 @@
       >
         В корзину
       </button>
-      <button class="button" mat-button [routerLink]="['/products', product.id]" (click)="openProduct()">Подробнее </button>
+      <button
+        class="button"
+        mat-button
+        (click)="openProduct(product)"
+      >
+        Подробнее
+      </button>
       <button class="button" mat-button [matMenuTriggerFor]="menu">Ред.</button>
 
       <mat-menu #menu="matMenu">

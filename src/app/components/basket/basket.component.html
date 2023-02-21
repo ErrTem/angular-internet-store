@@ -10,26 +10,19 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button class="button" mat-button >-</button>
-      <div class="price" >
+      <button class="button" mat-button (click)="minusFromBasket(basketItem.product)">-</button>
+      <div class="price">
         Количество:
-        <div  *ngIf="isInputVisible; else ngSelect" >{{basketItem.quantity}}</div>
-        <ng-template #ngSelect>
-          <input
-            (click)="showInput($event)"
-            style="display: none"
-            class="edit"
-            [value]="basketItem.quantity"
-            (keyup)="changeQuantity($event)"
-
-            size="3"
-            maxlength="3"
-
-            >
-        </ng-template>
+        <span>{{basketItem.quantity}}</span>
       </div>
-
-      <button class="button" mat-button >+</button>
+      <button class="button" mat-button (click)="addToBasket(basketItem.product)">+</button>
     </mat-card-actions>
   </mat-card>
+
+  <ng-container *ngIf="totalPrice$ | async">
+    <mat-card class="example-card">
+      <mat-card-content>Сумма заказа составляет: <p>{{totalPrice$ | async |currency}}</p></mat-card-content>
+    </mat-card>
+  </ng-container>
+
 </div>

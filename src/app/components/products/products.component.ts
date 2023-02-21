@@ -1,14 +1,14 @@
 import {Component, OnInit} from "@angular/core";
 import {BasketItem, PProduct} from "../../models/products";
-import {BehaviorSubject, filter, mapTo, merge, Observable, Subscription} from "rxjs";
+import {map, Observable} from "rxjs";
 import {ProductsService} from "../../services/products.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {DialogBoxComponent} from "../dialog-box/dialog-box.component";
-import {ResolveEnd, ResolveStart, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {BasketService} from "../../services/basket.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SnackBarComponent} from "../decorations/snack-bar/snack-bar.component";
-import {ProductDetailsComponent} from "../product-details/product-details.component";
+import {ProductDetailsComponent, ProductDetailsDialogData} from "../product-details/product-details.component";
 
 @Component({
   selector: "app-products",
@@ -19,9 +19,11 @@ export class ProductsComponent implements OnInit {
   constructor(private ProductsService: ProductsService,
               public dialog: MatDialog,
               private router: Router,
+              private route: ActivatedRoute,
               private basketService: BasketService,
               private snackBar: MatSnackBar) {
   }
+
   durationInSeconds = 5
 
   isLoading!: Observable<boolean>
@@ -34,29 +36,30 @@ export class ProductsComponent implements OnInit {
   canEdit: boolean = false // todo admin logic and authorization
   canView: boolean = false
 
-  private showLoader!: Observable<boolean>
-  private hideLoader!: Observable<boolean>
-
   ngOnInit(): void {
-
     this.canEdit = true
     this.products$ = this.ProductsService.getProducts()
     this.basket$ = this.basketService.getBasket()
-
-// todo loader doesnt work
-    this.hideLoader = this.router.events.pipe(filter((e) => e instanceof ResolveEnd),
-      mapTo(false))
-
-    this.showLoader = this.router.events.pipe(filter((e) => e instanceof ResolveStart),
-      mapTo(true))
-
-    this.isLoading = merge(this.hideLoader, this.showLoader)
+    this.products$
+      .pipe(
+        map((products) => {
+          const [, , productId] = this.router.url.split("/")
+          return products.find((product) => productId === String(product.id))
+        })
+      )
+      .subscribe((product) => {
+        product && this.openProduct(product)
+      })
   }
 
-  openSnackBar() {
-    this.snackBar.openFromComponent(SnackBarComponent, {
-      duration: this.durationInSeconds * 200,
-    });
+  openProduct(product: PProduct): void {
+    const dialogRef = this.dialog.open<ProductDetailsComponent, ProductDetailsDialogData>(ProductDetailsComponent, {
+      width: "500px",
+      height: "500px",
+      data: {product},
+      // disableClose: true
+    })
+    dialogRef.afterClosed().subscribe(console.log)
   }
 
   addToBasket(product: PProduct) {
@@ -98,8 +101,9 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+// todo postData
+
   postData(data: PProduct) {
-    console.log(data)
     this.ProductsService.postProduct(data).subscribe((data) => {
       this.products.push(data)
     })
@@ -114,10 +118,9 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  openProduct() :void {
-    const dialogRef = this.dialog.open(ProductDetailsComponent)
-    dialogRef.afterClosed().subscribe()
-
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 200,
+    });
   }
-
 }
