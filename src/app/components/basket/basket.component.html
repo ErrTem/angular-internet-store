@@ -1,5 +1,13 @@
-<div class="container">
+<div class="container-wrapper">
+<ng-container *ngIf="totalPrice$ | async">
+  <mat-card class="price-card">
+    <mat-card-content>
+      <span>Сумма заказа составляет: <p>{{totalPrice$ | async |currency}}</p></span>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
 
+<div class="container">
   <mat-card class="example-card" *ngFor="let basketItem of basket$ | async">
     <mat-card-title>{{basketItem.product.title}}</mat-card-title>
     <img class="image" mat-card-image src="{{basketItem.product.image}}">
@@ -19,10 +27,6 @@
     </mat-card-actions>
   </mat-card>
 
-  <ng-container *ngIf="totalPrice$ | async">
-    <mat-card class="example-card">
-      <mat-card-content>Сумма заказа составляет: <p>{{totalPrice$ | async |currency}}</p></mat-card-content>
-    </mat-card>
-  </ng-container>
 
+</div>
 </div>

@@ -1,16 +1,40 @@
-:host {
+.header-main {
+  top: 0;
+  position: sticky;
+  z-index: 99;
+  background-color: #F77E21;
+  color: white;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
 
-.demo-section {
-  z-index: 100;
-}
-// todo что перекрывает цвет?
-.active-link {
-  color: #F77E21 !important;
-  background-color: #FFCA86 !important;
+  .pizza-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    user-select: none;
+
+    .icon {
+      margin-right: 10px;
+    }
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
+
+  .header-button {
+    margin-right: 10px;
+    background-color: #FFCA86;
+
+  }
+
+  .active-link {
+    background-color: wheat;
+    color: #F77E21
+  }
+
+  .badge-icon {
+    z-index: 100;
+  }
 }
 
 

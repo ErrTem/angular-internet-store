@@ -1,0 +1,113 @@
+body {
+  overflow-x: hidden;
+}
+
+.mdc-card.product-card {
+  min-width: 350px;
+  max-width: 500px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFCA86;
+  align-items: center;
+  margin: 20px;
+  text-align: center;
+
+
+//.mdc-card {
+//  .product-card {
+//    min-width: 350px;
+//    height: 550px;
+//    display: flex;
+//    flex-direction: column;
+//    background-color: #FFCA86;
+//    align-items: center;
+//    margin: 20px;
+//    text-align: center;
+//  }
+//
+//}
+
+
+  .title {
+    margin: 10px 0px 10px 0px;
+  }
+
+  .image {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 10px;
+  }
+
+  .ingredients {
+    margin: 20px 10px 0px 10px;
+
+  }
+
+  .price {
+    margin: 10px;
+    font-size: large;
+  }
+}
+
+//
+//.button {
+//  margin-right: 10px;
+//  color: darkred;
+//  background-color: wheat;
+//}
+//
+//.example-card {
+//  width: 350px;
+//  height: 600px;
+//  display: flex;
+//  flex-direction: column;
+//}
+//
+//p {
+//  .price {
+//    margin: 10px;
+//    font-size: large;
+//  }
+//
+//  display: flex;
+//  justify-content: space-between;
+//
+//  &.ingredients {
+//    margin: 20px 10px 0px 10px;
+//  }
+//}
+//
+//.mat-mdc-card-actions {
+//  display: flex;
+//  margin: 10px;
+//  justify-content: space-around;
+//}
+//
+//.price-card {
+//  text-align: center;
+//
+//  p {
+//    font-size: large;
+//    font-weight: bold;
+//    display: inline;
+//  }
+//
+//  span {
+//    text-align: center;
+//    display: inline-block;
+//    width: 100%;
+//  }
+//
+//
+//}
+
+
+.mat-toolbar-row.toolbar-editor {
+  background-color: #FFCA86;
+  width: 100%;
+}
+
+.spacer {
+  flex-grow: 1;
+}

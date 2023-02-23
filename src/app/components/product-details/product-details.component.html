@@ -1,19 +1,24 @@
 <div class="container">
-    <mat-card class="example-card">
+  <mat-card class="example-card">
 
-      <mat-card-title>{{data.product.title}}</mat-card-title>
-      <img class="image" mat-card-image src="{{data.product.image}}">
+    <mat-card-title>{{data.product.title}}</mat-card-title>
+    <img class="image" mat-card-image src="{{data.product.image}}">
 
-      <mat-card-content>
+    <mat-card-content>
+      <p>{{data.product.ingredients}}</p>
+      <span>Цена: <p>{{data.product.price | currency}}</p></span>
 
-        <p>Цена: {{data.product.price | currency}}</p>
-        <p>{{data.product.ingredients}}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button class="button" mat-button cdkFocusInitial>В корзину</button>
-      </mat-card-actions>
-    </mat-card>
-  {{data | json}}
-  <button (click)="sucsess()">OK</button>
-  <button (click)="unSucsess()">COCK</button>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        class="button"
+        mat-button
+        cdkFocusInitial
+        (click)="addToBasket(data.product)"
+        (click)="openSnackBar()" aria-label="Show an example snack-bar"
+      >
+        В корзину
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>

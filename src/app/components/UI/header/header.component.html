@@ -1,16 +1,16 @@
-<mat-toolbar>
+<mat-toolbar class="header-main">
 
   <mat-toolbar-row>
-    <div class="toolbar no-select" routerLink="/products">
-      <mat-icon>local_pizza</mat-icon>
+    <div class="pizza-item" routerLink="/products">
+      <mat-icon class="icon">local_pizza</mat-icon>
       <span>Pizza Shop</span>
     </div>
 
-    <span class="example-spacer"></span>
+    <span class="spacer"></span>
 
-    <div class="toolbar no-select">
+    <div class="toolbar">
       <button
-        class="toolbar button"
+        class="header-button"
         routerLinkActive="active-link"
         mat-flat-button routerLink="/products"
       >
@@ -18,7 +18,7 @@
       </button>
       <button
         routerLinkActive="active-link"
-        class="toolbar button demo-section"
+        class="header-button badge-icon"
         mat-flat-button
         routerLink="basket"
         [matBadgeHidden]="itemCountHidden$ | async"
@@ -30,7 +30,7 @@
       </button>
       <button
         routerLinkActive="active-link"
-        class="toolbar button"
+        class="header-button"
         mat-flat-button routerLink="login"
         (click)="logout() "
       >

@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { // todo перенеси отсюда
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(["products"]).then(console.log)
+      this.router.navigate(["products"])
     }
   }
 

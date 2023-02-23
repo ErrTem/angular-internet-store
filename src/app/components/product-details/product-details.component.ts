@@ -3,6 +3,10 @@ import {PProduct} from "../../models/products";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {ProductsService} from "../../services/products.service";
+import {BasketService} from "../../services/basket.service";
+import {SnackBarComponent} from "../decorations/snack-bar/snack-bar.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 export interface ProductDetailsDialogData {
   product: PProduct,
@@ -15,10 +19,12 @@ export interface ProductDetailsDialogData {
 })
 export class ProductDetailsComponent implements OnInit {
   constructor(
+    private snackBar: MatSnackBar,
+    private basketService: BasketService,
     public dialogRef: MatDialogRef<ProductDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProductDetailsDialogData) {
   }
-
+  durationInSeconds = 5
   product!: PProduct
   productSubscription!: Subscription
 
@@ -26,15 +32,16 @@ export class ProductDetailsComponent implements OnInit {
     console.log(this.data);
   }
 
-  sucsess() {
-    this.dialogRef.close("yes")
-  }
-
-  unSucsess() {
-    this.dialogRef.close("nope")
+  addToBasket(product: PProduct) {
+    this.basketService.addBasketItem(product)
   }
 
   onNoClick(): void {
     this.dialogRef.close()
+  }
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 200,
+    });
   }
 }
