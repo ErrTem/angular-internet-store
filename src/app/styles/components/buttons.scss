@@ -4,6 +4,12 @@ button {
     margin: 10px;
   }
 
+  &.product-large-button {
+    width: 250px;
+    margin-bottom: 20px;
+    background-color: #D61C4E;
+  }
+
   &.add-products-button {
     background-color: #F77E21;
     color: #D61C4E;

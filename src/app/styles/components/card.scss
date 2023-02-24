@@ -2,6 +2,14 @@ body {
   overflow-x: hidden;
 }
 
+.container-wrapper {
+  min-height: calc(100vh - 128px);
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
 .mdc-card.product-card {
   min-width: 350px;
   max-width: 500px;
@@ -12,22 +20,6 @@ body {
   align-items: center;
   margin: 20px;
   text-align: center;
-
-
-//.mdc-card {
-//  .product-card {
-//    min-width: 350px;
-//    height: 550px;
-//    display: flex;
-//    flex-direction: column;
-//    background-color: #FFCA86;
-//    align-items: center;
-//    margin: 20px;
-//    text-align: center;
-//  }
-//
-//}
-
 
   .title {
     margin: 10px 0px 10px 0px;
@@ -49,65 +41,28 @@ body {
     font-size: large;
   }
 }
+ .mdc-card.product-single-card {
+   margin: 0;
+ }
 
-//
-//.button {
-//  margin-right: 10px;
-//  color: darkred;
-//  background-color: wheat;
-//}
-//
-//.example-card {
-//  width: 350px;
-//  height: 600px;
-//  display: flex;
-//  flex-direction: column;
-//}
-//
-//p {
-//  .price {
-//    margin: 10px;
-//    font-size: large;
-//  }
-//
-//  display: flex;
-//  justify-content: space-between;
-//
-//  &.ingredients {
-//    margin: 20px 10px 0px 10px;
-//  }
-//}
-//
-//.mat-mdc-card-actions {
-//  display: flex;
-//  margin: 10px;
-//  justify-content: space-around;
-//}
-//
-//.price-card {
-//  text-align: center;
-//
-//  p {
-//    font-size: large;
-//    font-weight: bold;
-//    display: inline;
-//  }
-//
-//  span {
-//    text-align: center;
-//    display: inline-block;
-//    width: 100%;
-//  }
-//
-//
-//}
+.mat-toolbar-row {
+  &.toolbar-editor {
+    background-color: #FFCA86;
+    width: 100%;
+  }
 
+  &.toolbar-price {
+    background-color: #FFCA86;
+    justify-content: center;
 
-.mat-toolbar-row.toolbar-editor {
-  background-color: #FFCA86;
-  width: 100%;
+    p {
+      margin-top: 12px;
+      font: {
+        weight: bold;
+        size: large;
+      }
+    }
+  }
+
 }
 
-.spacer {
-  flex-grow: 1;
-}

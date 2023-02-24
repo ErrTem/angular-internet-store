@@ -48,11 +48,49 @@
       "price": "167",
       "image": "/assets/images/ham.jpg",
       "ingredients": "Ветчина, шампиньоны, увеличенная порция моцареллы, фирменный томатный соус"
+    },
+    {
+      "id": 8,
+      "title": "Ветчина и грибыq",
+      "price": "167",
+      "image": "/assets/images/four_mayo.jpg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": ""
+      }
+    },
+    {
+      "id": 9,
+      "title": "Ветчина и грибы",
+      "price": "167",
+      "image": "/assets/images/ham.jpg",
+      "ingredients": "Ветчина, шампиньоны, увеличенная порция моцареллы, фирменный томатный соус"
+    },
+    {
+      "id": 10,
+      "title": "выв",
+      "price": "выфв",
+      "image": "/assets/images/four_mayo.jpg",
+      "ingredients": "фыв"
+    },
+    {
+      "id": 11,
+      "title": "ывф",
+      "price": "ыфв",
+      "image": "/assets/images/four_mayo.jpg",
+      "ingredients": "ыфв"
+    },
+    {
+      "id": 12,
+      "title": "dsa",
+      "price": "sda",
+      "image": "/assets/images/four_mayo.jpg",
+      "ingredients": "dsa"
     }
   ],
   "goods": [
-    {
-    }
+    {}
   ],
   "basket": [
     {}

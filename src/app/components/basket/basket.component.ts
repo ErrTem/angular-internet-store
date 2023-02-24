@@ -7,8 +7,7 @@ import {BasketService} from "../../services/basket.service";
 
 @Component({
   selector: "app-basket",
-  templateUrl: "./basket.component.html",
-  styleUrls: ["../products.component.scss", "../../styles/styles.scss"]
+  templateUrl: "./basket.component.html"
 })
 export class BasketComponent implements OnInit {
   constructor(private ProductService: ProductsService,

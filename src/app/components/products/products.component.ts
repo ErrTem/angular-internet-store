@@ -37,52 +37,37 @@ export class ProductsComponent implements OnInit {
     this.canEdit = true
     this.products$ = this.productsService.getProducts()
     this.basket$ = this.basketService.getBasket()
-
-  }
-
-  openProduct(product: PProduct): void {
-    const dialogRef = this.dialog
-      .open<ProductDetailsComponent, ProductDetailsDialogData>(ProductDetailsComponent, {
-        width: "500px",
-        height: "620px",
-        data: {product},
-        // disableClose: true
-      })
-  }
-
-// todo можно ли обойтись без подписки, loader
-
-
-  deleteItem(product: PProduct) {
-    this.products$ = this.productsService.deleteProduct(product.id)
-      .pipe(
-        switchMap(() => this.productsService.getProducts())
-      )
   }
 
   addToBasket(product: PProduct) {
     this.basketService.addBasketItem(product)
   }
 
-// todo logic for update basket
-
-  updateToBasket(product: PProduct) {
-    // product.quantity += 1
-    this.productsService.updateProductToBasket(product).subscribe(() => {
-    })
+  openProduct(product: PProduct): void {
+    const dialogRef = this.dialog
+      .open<ProductDetailsComponent, ProductDetailsDialogData>(ProductDetailsComponent, {
+        width: "auto",
+        height: "auto",
+        data: {product},
+        // disableClose: true
+      })
   }
 
+  deleteItem(product: PProduct) {
+    this.products$ = this.productsService.deleteProduct(product.id)
+      .pipe(
+        switchMap(() => this.productsService.getProducts()) //todo зачем пайп? меняем стрим или как?
+      )
+  }
 
-  openDialog(product?: PProduct): void {
+  openDialog(product?: PProduct): void { //todo почему после product нужен ?
     let dialogConfig = new MatDialogConfig()
     dialogConfig.width = "500px"
-
     dialogConfig.disableClose = true
     dialogConfig.data = product
     const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig)
-
     dialogRef.afterClosed().subscribe((data) => {
-      if (data) {
+      if (data) { //todo можно ли обойтись одним ИФ
         if (data && data.id)
           this.updateData(data)
         else
@@ -91,7 +76,16 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-// todo postData
+  updateData(product: PProduct) {
+    this.productsService.updateProduct(product)
+    this.products$ = this.productsService.getProducts()
+    // this.productsService.updateProduct(product).subscribe((data) => {
+    //   this.products = this.products.map((product) => {
+    //     if (product.id === data.id) return data
+    //     else return product
+    //   })
+    // })
+  }
 
   postData(data: PProduct) {
     this.productsService.postProduct(data).subscribe((data) => {
@@ -99,14 +93,12 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  updateData(product: PProduct) {
-    this.productsService.updateProduct(product).subscribe((data) => {
-      this.products = this.products.map((product) => {
-        if (product.id === data.id) return data
-        else return product
-      })
+  updateToBasket(product: PProduct) {
+    // product.quantity += 1
+    this.productsService.updateProductToBasket(product).subscribe(() => {
     })
   }
+
 
   openSnackBar() {
     this.snackBar.openFromComponent(SnackBarComponent, {

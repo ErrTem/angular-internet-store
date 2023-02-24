@@ -17,7 +17,9 @@
           <p class="price">Цена: <span>{{product.price | currency}}</span></p>
           <p class="ingredients">{{product.ingredients}}</p>
         </mat-card-content>
+
         <span class="spacer"></span>
+
         <mat-card-actions class="actions">
           <button
             class="button"
@@ -35,7 +37,13 @@
           >
             Подробнее
           </button>
-          <button class="button" mat-button [matMenuTriggerFor]="menu">Ред.</button>
+          <button
+            class="button"
+            mat-button
+            [matMenuTriggerFor]="menu"
+          >
+            Ред.
+          </button>
 
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="deleteItem(product)">Удалить</button>
