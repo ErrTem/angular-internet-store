@@ -67,11 +67,10 @@ export class ProductsComponent implements OnInit {
     dialogConfig.data = product
     const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig)
     dialogRef.afterClosed().subscribe((data) => {
-      console.log(data)
-      if (data) //todo можно ли обойтись одним ИФ
-        // if (data && data.id)
+      if (!data.id) {
+        data.id = Date.now()
         this.postData(data)
-      else
+      } else
         this.updateData(data)
     })
   }
@@ -79,23 +78,16 @@ export class ProductsComponent implements OnInit {
   updateData(product: PProduct) {
     this.products$ = this.productsService.updateProduct(product)
       .pipe(
-        switchMap(() => this.productsService.getProducts()) //todo зачем пайп? меняем стрим или как?
+        switchMap(() => this.productsService.getProducts())
       )
   }
 
   postData(product: PProduct) {
     this.products$ = this.productsService.postProduct(product)
       .pipe(
-        switchMap(() => this.productsService.getProducts()) //todo зачем пайп? меняем стрим или как?
+        switchMap(() => this.productsService.getProducts())
       )
   }
-
-  updateToBasket(product: PProduct) {
-    // product.quantity += 1
-    this.productsService.updateProductToBasket(product).subscribe(() => {
-    })
-  }
-
 
   openSnackBar() {
     this.snackBar.openFromComponent(SnackBarComponent, {
