@@ -67,30 +67,27 @@ export class ProductsComponent implements OnInit {
     dialogConfig.data = product
     const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig)
     dialogRef.afterClosed().subscribe((data) => {
-      if (data) { //todo можно ли обойтись одним ИФ
-        if (data && data.id)
-          this.updateData(data)
-        else
-          this.postData(data)
-      }
+      console.log(data)
+      if (data) //todo можно ли обойтись одним ИФ
+        // if (data && data.id)
+        this.postData(data)
+      else
+        this.updateData(data)
     })
   }
 
   updateData(product: PProduct) {
-    this.productsService.updateProduct(product)
-    this.products$ = this.productsService.getProducts()
-    // this.productsService.updateProduct(product).subscribe((data) => {
-    //   this.products = this.products.map((product) => {
-    //     if (product.id === data.id) return data
-    //     else return product
-    //   })
-    // })
+    this.products$ = this.productsService.updateProduct(product)
+      .pipe(
+        switchMap(() => this.productsService.getProducts()) //todo зачем пайп? меняем стрим или как?
+      )
   }
 
-  postData(data: PProduct) {
-    this.productsService.postProduct(data).subscribe((data) => {
-      this.products.push(data)
-    })
+  postData(product: PProduct) {
+    this.products$ = this.productsService.postProduct(product)
+      .pipe(
+        switchMap(() => this.productsService.getProducts()) //todo зачем пайп? меняем стрим или как?
+      )
   }
 
   updateToBasket(product: PProduct) {

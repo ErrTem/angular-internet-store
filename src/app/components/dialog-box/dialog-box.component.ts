@@ -20,7 +20,7 @@ export class DialogBoxComponent implements OnInit {
   }
 
   myForm: FormGroup = new FormGroup({ //todo formbuilder валидация формы
-    id: new FormControl(this.data?.id ?? null),
+    id: new FormControl(this.data?.id ?? Date.now()), //todo пофиксить
     title: new FormControl(this.data?.title ?? ""),
     price: new FormControl(this.data?.price ?? ""),
     image: new FormControl(this.data?.image ?? ""),

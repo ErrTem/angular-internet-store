@@ -50,17 +50,6 @@
       "ingredients": "Ветчина, шампиньоны, увеличенная порция моцареллы, фирменный томатный соус"
     },
     {
-      "id": 8,
-      "title": "Ветчина и грибыq",
-      "price": "167",
-      "image": "/assets/images/four_mayo.jpg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": ""
-      }
-    },
-    {
       "id": 9,
       "title": "Ветчина и грибы",
       "price": "167",
@@ -69,24 +58,52 @@
     },
     {
       "id": 10,
-      "title": "выв",
-      "price": "выфв",
+      "title": "Попытка раз",
+      "price": "12",
       "image": "/assets/images/four_mayo.jpg",
-      "ingredients": "фыв"
+      "ingredients": ""
     },
     {
       "id": 11,
-      "title": "ывф",
-      "price": "ыфв",
+      "title": "я хачу пиццы",
+      "price": "122",
       "image": "/assets/images/four_mayo.jpg",
-      "ingredients": "ыфв"
+      "ingredients": ""
     },
     {
-      "id": 12,
-      "title": "dsa",
-      "price": "sda",
+      "id": 1677443863656,
+      "title": "2",
+      "price": "2",
       "image": "/assets/images/four_mayo.jpg",
-      "ingredients": "dsa"
+      "ingredients": ""
+    },
+    {
+      "id": 1677443881444,
+      "title": "111",
+      "price": "111",
+      "image": "/assets/images/four_mayo.jpg",
+      "ingredients": ""
+    },
+    {
+      "id": 1677443893675,
+      "title": "11111",
+      "price": "121",
+      "image": "/assets/images/four_mayo.jpg",
+      "ingredients": ""
+    },
+    {
+      "id": 1677443906382,
+      "title": "Пицца",
+      "price": "1",
+      "image": "/assets/images/four_mayo.jpg",
+      "ingredients": ""
+    },
+    {
+      "id": 1677443957286,
+      "title": "Test",
+      "price": "7",
+      "image": "/assets/images/four_mayo.jpg",
+      "ingredients": ""
     }
   ],
   "goods": [
