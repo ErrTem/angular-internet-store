@@ -97,6 +97,13 @@
       "price": "1",
       "image": "/assets/images/four_mayo.jpg",
       "ingredients": ""
+    },
+    {
+      "id": 1677509448814,
+      "title": "в",
+      "price": "2",
+      "image": "/assets/images/four_mayo.jpg",
+      "ingredients": "вввввввввввввввввввввввввввввввввввввввввввв"
     }
   ],
   "goods": [

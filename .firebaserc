@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "online-store-angular-a00fe": {
+      "hosting": {
+        "online-store-angular": [
+          "online-store-angular-a00fe"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "online-store-angular-a00fe"
+  }
+}

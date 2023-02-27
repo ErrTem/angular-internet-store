@@ -8,10 +8,14 @@ const minEmailLength = 5;
 
 @Component({
   selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  templateUrl: "./login.component.html"
 })
 export class LoginComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private authService: AuthService) {
+  }
+
   loginForm: FormGroup = new FormGroup({
     email: new FormControl("", [
       Validators.required,
@@ -33,12 +37,6 @@ export class LoginComponent implements OnInit {
   readonly errorPasswordMap: { [key: string]: string } = {
     required: "please type your password",
     pattern: "should be at least 8 symbols and letters"
-  }
-
-  constructor(
-    private router: Router,
-    private authService: AuthService
-  ) {
   }
 
   ngOnInit(): void { // todo перенеси отсюда

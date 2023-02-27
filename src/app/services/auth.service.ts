@@ -10,10 +10,8 @@ import {FbAuthResponse} from "../models/interface";
   providedIn: "root" // todo сделать админский модуль и зарегестрировать там?
 })
 export class AuthService {
-
   constructor(private router: Router,
-              private http: HttpClient,
-  ) {
+              private http: HttpClient,) {
   }
 
   private setToken(response: FbAuthResponse | null) {
@@ -45,7 +43,6 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!this.token
   }
-
 
   getToken() {
     return localStorage.getItem("token")

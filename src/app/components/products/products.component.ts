@@ -94,4 +94,6 @@ export class ProductsComponent implements OnInit {
       duration: this.durationInSeconds * 200,
     });
   }
+
+  //todo подгрузка товаров
 }

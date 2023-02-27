@@ -1,51 +1,48 @@
-<mat-card class="example-card login-form">
-  <mat-card-content>
-    <form
-      class="example-form"
-      [formGroup]="loginForm"
-      (ngSubmit)="submit()"
-    >
+<div class="container-wrapper login-card">
+  <form
+    class="card-form"
+    [formGroup]="loginForm"
+    (ngSubmit)="submit()"
+  >
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input
-          matInput [formGroup]="loginForm"
-          formControlName="email"
-          type="email"
-          placeholder="Ex. pat@example.com"
-        >
-        <ng-container *ngIf="emailControl.touched && emailControlError">
-          <!--        todo почему можно вызвать emailControl.hasError?-->
-          <mat-error>
-            {{errorLoginMap[emailControlError]}}
-          </mat-error>
-        </ng-container>
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Password</mat-label>
-        <input
-          matInput [formGroup]="loginForm"
-          formControlName="password"
-          type="password"
-          placeholder="should include at least 8 symbols and letters"
-        >
-        <ng-container *ngIf="passwordControl.touched && passwordControlError">
-          <mat-error>
-            {{errorPasswordMap[passwordControlError]}}
-          </mat-error>
-        </ng-container>
-      </mat-form-field>
-
-      <button
-        class="toolbar mat-mdc-button mat-mdc-card login-button"
-        type="submit"
-        [disabled]="loginForm.invalid"
+    <mat-form-field class="card-full-width">
+      <mat-label>Email</mat-label>
+      <input
+        matInput [formGroup]="loginForm"
+        formControlName="email"
+        type="email"
+        placeholder="Ex. pat@example.com"
       >
-        Login
-      </button>
+      <ng-container *ngIf="emailControl.touched && emailControlError">
+        <!--        todo почему можно вызвать emailControl.hasError?-->
+        <mat-error>
+          {{errorLoginMap[emailControlError]}}
+        </mat-error>
+      </ng-container>
+    </mat-form-field>
 
-    </form>
-  </mat-card-content>
-</mat-card>
+    <mat-form-field class="card-full-width">
+      <mat-label>Password</mat-label>
+      <input
+        matInput [formGroup]="loginForm"
+        formControlName="password"
+        type="password"
+        placeholder="should include at least 8 symbols and letters"
+      >
+      <ng-container *ngIf="passwordControl.touched && passwordControlError">
+        <mat-error>
+          {{errorPasswordMap[passwordControlError]}}
+        </mat-error>
+      </ng-container>
+    </mat-form-field>
 
+    <button
+      mat-button
+      class="button"
+      type="submit"
+      [disabled]="loginForm.invalid"
+    >
+      Login
+    </button>
+  </form>
+</div>

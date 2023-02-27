@@ -29,8 +29,8 @@ import {LoginComponent} from "./components/auth/login/login.component";
 import {NotFoundComponent} from "./components/auth/not-found/not-found.component";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatBadgeModule} from "@angular/material/badge";
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { SnackBarComponent } from './components/decorations/snack-bar/snack-bar.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {SnackBarComponent} from "./components/decorations/snack-bar/snack-bar.component";
 
 @NgModule({
   declarations: [
@@ -63,10 +63,11 @@ import { SnackBarComponent } from './components/decorations/snack-bar/snack-bar.
     MatProgressBarModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule
+  ],
+  providers: [
 
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
