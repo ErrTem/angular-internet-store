@@ -32,6 +32,12 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {SnackBarComponent} from "./components/decorations/snack-bar/snack-bar.component";
 
+import {environment} from "../environments/environment";
+import {AngularFireModule} from "@angular/fire/compat";
+import {SignUpComponent} from "./components/auth/sign-up/sign-up.component";
+import { CheckoutComponent } from './components/checkout/checkout.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +49,9 @@ import {SnackBarComponent} from "./components/decorations/snack-bar/snack-bar.co
     DialogBoxComponent,
     LoginComponent,
     NotFoundComponent,
-    SnackBarComponent
+    SnackBarComponent,
+    SignUpComponent,
+    CheckoutComponent
   ],
   imports: [
     NgxsModule.forRoot(),
@@ -63,11 +71,11 @@ import {SnackBarComponent} from "./components/decorations/snack-bar/snack-bar.co
     MatProgressBarModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [
-
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

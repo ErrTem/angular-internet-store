@@ -12,7 +12,8 @@
       <button
         class="header-button"
         routerLinkActive="active-link"
-        mat-flat-button routerLink="/products"
+        mat-flat-button
+        routerLink="/products"
       >
         Главная
       </button>
@@ -20,7 +21,7 @@
         routerLinkActive="active-link"
         class="header-button badge-icon"
         mat-flat-button
-        routerLink="basket"
+        routerLink="/basket"
         [matBadgeHidden]="itemCountHidden$ | async"
         [matBadge]="itemsCountRound$ | async"
         matBadgeOverlap="true"
@@ -31,9 +32,10 @@
       <button
         routerLinkActive="active-link"
         class="header-button"
-        mat-flat-button routerLink="login"
-        (click)="logout() "
+        mat-flat-button
+        routerLink="login"
       >
+        <!--todo authService userLogged in ? войти(redirect) : выйти(func logout)-->
         Войти
       </button>
     </div>

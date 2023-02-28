@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
 import {User} from "../../../models/auth";
+import {AngularFireAuth} from "@angular/fire/compat/auth";
 
 const minEmailLength = 5;
 
@@ -11,23 +12,8 @@ const minEmailLength = 5;
   templateUrl: "./login.component.html"
 })
 export class LoginComponent implements OnInit {
-  constructor(
-    private router: Router,
-    private authService: AuthService) {
-  }
-
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl("", [
-      Validators.required,
-      Validators.email,
-      Validators.minLength(minEmailLength)
-    ]),
-    password: new FormControl("", [
-      Validators.required,
-      Validators.pattern(/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d).*$/)
-    ])
-  })
-
+  loginForm!: FormGroup
+  firebaseErrorMessage!: string
   readonly errorLoginMap: { [key: string]: string } = {
     email: "email is required",
     minlength: `should be more than ${minEmailLength} symbols`,
@@ -39,10 +25,44 @@ export class LoginComponent implements OnInit {
     pattern: "should be at least 8 symbols and letters"
   }
 
+  constructor(private router: Router,
+              private authService: AuthService,
+              public afAuth: AngularFireAuth) {
+  }
+
   ngOnInit(): void { // todo перенеси отсюда
     if (this.authService.isAuthenticated()) {
       this.router.navigate(["products"])
     }
+
+    this.firebaseErrorMessage = ""
+
+    this.loginForm = new FormGroup({
+      email: new FormControl("", [
+        Validators.required,
+        Validators.email,
+        Validators.minLength(minEmailLength)
+      ]),
+      password: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d).*$/)
+      ])
+    })
+  }
+
+  loginUser() {
+    if (this.loginForm.invalid)
+      return
+    this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password)
+      .then((result) => {
+        if (result === null) {
+          console.log("loggin in...")
+          this.router.navigate(["/products"])
+        } else if (result.isValid === false) {
+          console.log("login error", result)
+          this.firebaseErrorMessage = result.message
+        }
+      })
   }
 
   get emailControl(): FormControl {
@@ -79,6 +99,9 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  logout() {
+    this.authService.afLogout()
+  }
 
   // submitLogin() {
   //   this.authService.login(this.loginForm.value).subscribe({

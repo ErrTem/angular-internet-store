@@ -43,13 +43,6 @@
       "ingredients": "Цыпленок, соус песто, кубики брынзы, томаты, моцарелла, фирменный соус альфредо"
     },
     {
-      "id": 7,
-      "title": "Ветчина и грибы",
-      "price": "167",
-      "image": "/assets/images/ham.jpg",
-      "ingredients": "Ветчина, шампиньоны, увеличенная порция моцареллы, фирменный томатный соус"
-    },
-    {
       "id": 9,
       "title": "Ветчина и грибы",
       "price": "167",
@@ -104,6 +97,13 @@
       "price": "2",
       "image": "/assets/images/four_mayo.jpg",
       "ingredients": "вввввввввввввввввввввввввввввввввввввввввввв"
+    },
+    {
+      "id": 1677599219300,
+      "title": "22d",
+      "price": "2",
+      "image": "/assets/images/four_mayo.jpg",
+      "ingredients": "ddddddddddddddddddddddddddd"
     }
   ],
   "goods": [

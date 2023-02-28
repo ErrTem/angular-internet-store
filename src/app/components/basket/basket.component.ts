@@ -4,6 +4,7 @@ import {map, Observable, Subscription} from "rxjs";
 import {ProductsService} from "../../services/products.service";
 import {style} from "@angular/animations";
 import {BasketService} from "../../services/basket.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: "app-basket",
@@ -11,7 +12,8 @@ import {BasketService} from "../../services/basket.service";
 })
 export class BasketComponent implements OnInit {
   constructor(private ProductService: ProductsService,
-              private basketService: BasketService) {
+              private basketService: BasketService,
+              private authService: AuthService) {
   }
 
   editingQuantity: number = 1
@@ -36,5 +38,4 @@ export class BasketComponent implements OnInit {
   addToBasket(product: PProduct) {
     this.basketService.addBasketItem(product)
   }
-
 }

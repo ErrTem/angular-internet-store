@@ -2,7 +2,7 @@
   <form
     class="card-form"
     [formGroup]="loginForm"
-    (ngSubmit)="submit()"
+    (ngSubmit)="loginUser()"
   >
 
     <mat-form-field class="card-full-width">
@@ -42,7 +42,25 @@
       type="submit"
       [disabled]="loginForm.invalid"
     >
-      Login
+<!--      todo очистить форму и перенаправить на главную в случае успеха-->
+      Войти
+    </button>
+    <button
+      mat-button
+      class="button"
+      routerLink="/signup"
+    >
+      Зарегистрироваться
     </button>
   </form>
+
+  <div *ngIf="(afAuth.user | async)">
+    User is logged in
+    <button mat-button class="button" (click)="logout()">
+      Log out
+    </button>
+  </div>
+  <div *ngIf="!(afAuth.user | async)">
+    User is not logged in
+  </div>
 </div>
