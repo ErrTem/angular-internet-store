@@ -19,8 +19,6 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.signupForm = new FormGroup({
-    //
-    // })
+
   }
 }

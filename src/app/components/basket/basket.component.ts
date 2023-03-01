@@ -11,16 +11,16 @@ import {AuthService} from "../../services/auth.service";
   templateUrl: "./basket.component.html"
 })
 export class BasketComponent implements OnInit {
-  constructor(private ProductService: ProductsService,
-              private basketService: BasketService,
-              private authService: AuthService) {
-  }
-
   editingQuantity: number = 1
   isInputVisible = true
 
   totalPrice$!: Observable<number>
   basket$: Observable<BasketItem[]> = new Observable<BasketItem[]>()
+
+  constructor(private ProductService: ProductsService,
+              private basketService: BasketService,
+              private authService: AuthService) {
+  }
 
   ngOnInit(): void {
     this.basket$ = this.basketService.getBasket()

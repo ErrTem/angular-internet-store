@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from "@angular/core";
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from "@angular/core";
 import {BasketItem, PProduct} from "../../models/products";
 import {Observable, switchMap} from "rxjs";
 import {ProductsService} from "../../services/products.service";
@@ -14,15 +14,7 @@ import {ProductDetailsComponent, ProductDetailsDialogData} from "../product-deta
   selector: "app-products",
   templateUrl: "./products.component.html"
 })
-export class ProductsComponent implements OnInit {
-  constructor(private productsService: ProductsService,
-              public dialog: MatDialog,
-              private router: Router,
-              private route: ActivatedRoute,
-              private basketService: BasketService,
-              private snackBar: MatSnackBar) {
-  }
-
+export class ProductsComponent implements OnInit, OnDestroy {
   durationInSeconds = 5
 
   products: PProduct[] = []
@@ -32,6 +24,14 @@ export class ProductsComponent implements OnInit {
 
   canEdit: boolean = false // todo admin logic and authorization
   canView: boolean = false
+
+  constructor(private productsService: ProductsService,
+              public dialog: MatDialog,
+              private router: Router,
+              private route: ActivatedRoute,
+              private basketService: BasketService,
+              private snackBar: MatSnackBar) {
+  }
 
   ngOnInit(): void {
     this.canEdit = true
@@ -62,10 +62,10 @@ export class ProductsComponent implements OnInit {
 
   openDialog(product?: PProduct): void { //todo почему после product нужен ?
     let dialogConfig = new MatDialogConfig()
+    const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig)
     dialogConfig.width = "500px"
     dialogConfig.disableClose = true
     dialogConfig.data = product
-    const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig)
     dialogRef.afterClosed().subscribe((data) => {
       if (!data.id) {
         data.id = Date.now()
@@ -93,6 +93,10 @@ export class ProductsComponent implements OnInit {
     this.snackBar.openFromComponent(SnackBarComponent, {
       duration: this.durationInSeconds * 200,
     });
+  }
+
+  public ngOnDestroy(): void {
+    // todo зачем отписываться от products$
   }
 
   //todo подгрузка товаров
